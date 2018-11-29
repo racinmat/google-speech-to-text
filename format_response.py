@@ -18,7 +18,6 @@ def is_subtitle_length_too_long(words, max_length):
 
 
 def should_split_subtitle(words, max_length, max_seconds):
-    line = ' '.join([w.word for w in words])
     if is_subtitle_time_too_long(words, max_seconds):
         return True
 
@@ -28,31 +27,22 @@ def should_split_subtitle(words, max_length, max_seconds):
     return False
 
 
-def split_to_time_intervals(words, max_seconds=6):
-    words = words
-
-
-def split_to_length_intervals(words, max_length=40):
+def split_to_chunks(words, max_length, max_seconds):
     first_part_words = []
     rest_of_words = words
-    while rest_of_words and not is_subtitle_length_too_long(words + [rest_of_words[0]], max_length):
-        first_word = rest_of_words.pop()
+    while rest_of_words and \
+            not is_subtitle_length_too_long(first_part_words + [rest_of_words[0]], max_length) and \
+            not is_subtitle_time_too_long(first_part_words + [rest_of_words[0]], max_seconds):
+        first_word = rest_of_words.pop(0)
         first_part_words.append(first_word)
+    if rest_of_words:
+        return [first_part_words] + split_to_chunks(rest_of_words, max_length, max_seconds)
+    return [first_part_words]
 
 
-def split_subtitle(subtitle):
-    # chunks = []
-    # words = subtitle.words
-    # while is_subtitle_time_too_long(words, max_seconds):
-    #     return True
-    #
-    # if is_subtitle_length_too_long(words, max_length):
-    #     return True
-    #
-    #
-    #
-    # return make_chunks(words, 14)
-    return [subtitle.words]
+def split_subtitle(subtitle, max_length, max_seconds):
+    words = list(subtitle.words)
+    return split_to_chunks(words, max_length, max_seconds)
 
 
 def get_words_timing(words):
@@ -95,7 +85,7 @@ def format_transcript(results, file_path):
                 words = subtitle.words
                 print(subtitle.words)
                 if should_split_subtitle(words, max_length=40, max_seconds=6):
-                    for chunk in split_subtitle(subtitle):
+                    for chunk in split_subtitle(subtitle, max_length=40, max_seconds=6):
                         line = ' '.join([w.word for w in chunk])
                         counter += 1
                         add_srt_subtitle(line, chunk, file)
