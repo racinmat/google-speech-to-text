@@ -11,7 +11,7 @@ def auto_run(directory):
                   os.path.join(directory, file.replace(' ', '_')))  # Removes any spaces in the file names
 
     for file in os.listdir(directory):  # Get each .mp4 file in directory and run transcription
-        if file.endswith(".wav"):
+        if file.endswith('.wav'):
             file_path = os.path.join(directory, file)
             transcribe_gcs(file_path)
             print(file_path)
@@ -21,4 +21,5 @@ def auto_run(directory):
 
 if __name__ == '__main__':
     directory = argv[1]
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'D:\things\my-google-credentials.json'
     auto_run(directory)

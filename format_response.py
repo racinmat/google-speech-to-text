@@ -16,7 +16,7 @@ def format_transcript(results, audio_file):
         for i in range(0, len(l), n):
             yield l[i:i + n]
 
-    file = open(audio_file + ".srt", "w")
+    file = open(audio_file + ".srt", "w", encoding='utf-8')
     counter = 0  # Used for numbering lines in file
 
     for result in results:

@@ -1,5 +1,7 @@
 import os
 import os.path as osp
+import time
+
 from process_video import process_video
 from upload_to_gcloud import upload_to_gcloud
 from format_response import format_transcript
@@ -13,7 +15,8 @@ def transcribe_gcs(audio_file_path):
     print(audio_file_path)
     audio_file_name = osp.basename(audio_file_path)
     print(audio_file_name)
-    upload_to_gcloud(bucket_name, source_file_name=audio_file_path, destination_blob_name=audio_file_name)
+    # todo: do checking if it's already uploaded or not and upload it only if it's missing
+    # upload_to_gcloud(bucket_name, source_file_name=audio_file_path, destination_blob_name=audio_file_name)
 
     """Asynchronously transcribes the audio file specified by the gcs_uri."""
 
@@ -21,24 +24,24 @@ def transcribe_gcs(audio_file_path):
     audio = types.RecognitionAudio(
         uri="gs://" + bucket_name + "/" + audio_file_name)
     config = types.RecognitionConfig(
-        encoding=enums.RecognitionConfig.AudioEncoding.OGG_OPUS,
-        language_code='en-US',
-        sample_rate_hertz=16000,
+        encoding=enums.RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED,
+        language_code='cs-CZ',
+        # sample_rate_hertz=16000,
         enable_word_time_offsets=True
     )
     operation = client.long_running_recognize(config, audio)
 
-    if not operation.done():
+    while not operation.done():
         print('Waiting for results...')
+        time.sleep(30)   # 30 seconds
 
     result = operation.result()
 
     results = result.results
 
-    raw_text_file = open(audio_file_path + '.txt', 'w')
-    for result in results:
-        for alternative in result.alternatives:
-            raw_text_file.write(alternative.transcript + '\n')
-    raw_text_file.close()  # output raw text file of transcription
+    with open(audio_file_path + '.txt', 'w', encoding='utf-8') as raw_text_file:
+        for result in results:
+            for alternative in result.alternatives:
+                raw_text_file.write(alternative.transcript + '\n')
 
     format_transcript(results, audio_file_path)  # output .srt formatted version of transcription
