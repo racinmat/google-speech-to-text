@@ -35,6 +35,10 @@ def split_to_chunks(words, max_length, max_seconds):
             not is_subtitle_time_too_long(first_part_words + [rest_of_words[0]], max_seconds):
         first_word = rest_of_words.pop(0)
         first_part_words.append(first_word)
+    if not first_part_words and rest_of_words:
+        print('some word is too long, it will be as single chunk')
+        first_word = rest_of_words.pop(0)
+        first_part_words.append(first_word)
     if rest_of_words:
         return [first_part_words] + split_to_chunks(rest_of_words, max_length, max_seconds)
     return [first_part_words]

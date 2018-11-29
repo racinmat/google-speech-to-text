@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from sys import argv
 
 from google.protobuf import json_format
@@ -26,4 +27,5 @@ def auto_run(directory):
 if __name__ == '__main__':
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\Azathoth\Documents\my-google-credentials.json'
     directory = argv[1]
+    # sys.setrecursionlimit(1)
     auto_run(directory)
