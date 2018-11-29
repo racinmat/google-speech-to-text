@@ -7,8 +7,9 @@ from goog import transcribe_gcs
 def auto_run(directory):
     files = os.listdir(directory)
     for file in files:
-        os.rename(os.path.join(directory, file),
-                  os.path.join(directory, file.replace(' ', '_')))  # Removes any spaces in the file names
+        if ' ' in file:
+            os.rename(os.path.join(directory, file),
+                      os.path.join(directory, file.replace(' ', '_')))  # Removes any spaces in the file names
 
     for file in os.listdir(directory):  # Get each .mp4 file in directory and run transcription
         if file.endswith('.wav'):
@@ -20,6 +21,8 @@ def auto_run(directory):
 
 
 if __name__ == '__main__':
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\Azathoth\Documents\my-google-credentials.json'
     directory = argv[1]
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'D:\things\my-google-credentials.json'
     auto_run(directory)
+
+    # transcribe_gcs(r'E:\Projects\lecture_generator\audio_in\other\mono-Zakázaná Česká reklama T-Mobile 2014.wav')

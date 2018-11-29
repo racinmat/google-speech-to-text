@@ -1,9 +1,81 @@
 import math
 
 
+# subtitle rules:
+#   one record should be visible 1,2 to 6 seconds
+#   it can not be longer than 40 characters (spaces included) per line,
+#   it must contain 1 to 2 lines
+
+def is_subtitle_time_too_long(words, max_seconds):
+    start_seconds, end_seconds = get_words_timing(words)
+    interval = end_seconds - start_seconds
+    return interval > max_seconds
+
+
+def is_subtitle_length_too_long(words, max_length):
+    line = ' '.join([w.word for w in words])
+    return len(line) >= max_length
+
+
+def should_split_subtitle(words, max_length, max_seconds):
+    line = ' '.join([w.word for w in words])
+    if is_subtitle_time_too_long(words, max_seconds):
+        return True
+
+    if is_subtitle_length_too_long(words, max_length):
+        return True
+
+    return False
+
+
+def split_to_time_intervals(words, max_seconds=6):
+    words = words
+
+
+def split_to_length_intervals(words, max_length=40):
+    first_part_words = []
+    rest_of_words = words
+    while rest_of_words and not is_subtitle_length_too_long(words + [rest_of_words[0]], max_length):
+        first_word = rest_of_words.pop()
+        first_part_words.append(first_word)
+
+
+def split_subtitle(subtitle):
+    # chunks = []
+    # words = subtitle.words
+    # while is_subtitle_time_too_long(words, max_seconds):
+    #     return True
+    #
+    # if is_subtitle_length_too_long(words, max_length):
+    #     return True
+    #
+    #
+    #
+    # return make_chunks(words, 14)
+    return [subtitle.words]
+
+
+def get_words_timing(words):
+    start_time = words[0].start_time
+    end_time = words[-1].end_time
+
+    start_seconds = start_time.seconds + start_time.nanos * 1e-9
+    end_seconds = end_time.seconds + end_time.nanos * 1e-9
+
+    return start_seconds, end_seconds
+
+
 # Convert the raw transcription into proper .srt format
-def format_transcript(results, audio_file):
-    def format_time(seconds, offset=0):  # time conversion/formatting for timestamps
+def format_transcript(results, file_path):
+    def add_srt_subtitle(line, words, file):
+
+        start_seconds, end_seconds = get_words_timing(words)
+
+        file.write(str(counter) + '\n')
+        file.write(format_time(start_seconds) + ' --> ' + format_time(end_seconds) + '\n')
+        file.write(line + "\n\n")
+
+    def format_time(seconds: float, offset=0):  # time conversion/formatting for timestamps
         frac, whole = math.modf(seconds)
         f = frac * 1000
         m, s = divmod(whole, 60)
@@ -12,49 +84,23 @@ def format_transcript(results, audio_file):
 
     """Used to break up large transcript sections to prevent multi-line subtitles"""
 
-    def chunks(l, n):
-        for i in range(0, len(l), n):
-            yield l[i:i + n]
+    with open(file_path + '.srt', 'w', encoding='utf-8') as file:
+        counter = 0  # Used for numbering lines in file
 
-    file = open(audio_file + ".srt", "w", encoding='utf-8')
-    counter = 0  # Used for numbering lines in file
-
-    for result in results:
-        print(result)
-        alternatives = result.alternatives
-        for alternative in alternatives:
-            print(alternative)
-            words = alternative.words
-            print(words)
-            if len(words) < 14:
-                transcript = alternative.transcript
-                start_time = words[0].start_time
-                end_time = words[-1].end_time
-                start_time_seconds = start_time.seconds + start_time.nanos * 1e-9
-
-                end_time_seconds = end_time.seconds + end_time.nanos * 1e-9
-
-                counter += 1
-
-                file.write(str(counter) + '\n')
-                file.write(format_time(start_time_seconds) + ' --> ' + format_time(end_time_seconds) + '\n')
-                file.write(transcript + "\n\n")
-            else:
-                chunk = list(chunks(words, 14))
-                for words in chunk:
-                    start_time = words[0].start_time
-                    end_time = words[-1].end_time
-
-                    start_time_seconds = start_time.seconds + start_time.nanos * 1e-9
-
-                    end_time_seconds = end_time.seconds + end_time.nanos * 1e-9
-
-                    section = ''
-                    for word_info in words:
-                        section += word_info.word + " "
-
+        for result in results:
+            print(result)
+            subtitles = result.alternatives
+            for subtitle in subtitles:
+                print(subtitle)
+                words = subtitle.words
+                print(subtitle.words)
+                if should_split_subtitle(words, max_length=40, max_seconds=6):
+                    for chunk in split_subtitle(subtitle):
+                        line = ' '.join([w.word for w in chunk])
+                        counter += 1
+                        add_srt_subtitle(line, chunk, file)
+                else:
+                    line = subtitle.transcript
+                    words = subtitle.words
                     counter += 1
-                    file.write(str(counter) + '\n')
-                    file.write(format_time(start_time_seconds) + ' --> ' + format_time(end_time_seconds) + '\n')
-                    file.write(section + "\n\n")
-    file.close()
+                    add_srt_subtitle(line, words, file)
