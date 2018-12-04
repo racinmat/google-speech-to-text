@@ -80,6 +80,8 @@ def format_transcript(results, file_path):
 
     with open(file_path + '.srt', 'w', encoding='utf-8') as file:
         counter = 0  # Used for numbering lines in file
+        max_seconds = 4
+        max_length = 40
 
         for result in results:
             print(result)
@@ -88,8 +90,8 @@ def format_transcript(results, file_path):
                 print(subtitle)
                 words = subtitle.words
                 print(subtitle.words)
-                if should_split_subtitle(words, max_length=40, max_seconds=6):
-                    for chunk in split_subtitle(subtitle, max_length=40, max_seconds=6):
+                if should_split_subtitle(words, max_length=max_length, max_seconds=max_seconds):
+                    for chunk in split_subtitle(subtitle, max_length=max_length, max_seconds=max_seconds):
                         line = ' '.join([w.word for w in chunk])
                         counter += 1
                         add_srt_subtitle(line, chunk, file)
