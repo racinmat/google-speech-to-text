@@ -1,0 +1,314 @@
+{
+ "results": [
+  {
+   "alternatives": [
+    {
+     "transcript": "\u0160la jsem do toho plus jedeme jedeme je\u0161t\u011b na v\u00e1s do\u017eenu Zatracenej kr\u00e1m univerz\u00e1ln\u00ed co v\u0161echno m\u00e1me Karpatsk\u00e1 fazole jantarov\u00e9 Amerika nem\u00e1m vod\u011b nap\u011b\u0148ova\u010d v\u00fdm\u011bn\u011b",
+     "confidence": 0.8405112624168396,
+     "words": [
+      {
+       "startTime": "0s",
+       "endTime": "0.500s",
+       "word": "\u0160la"
+      },
+      {
+       "startTime": "0.500s",
+       "endTime": "0.900s",
+       "word": "jsem"
+      },
+      {
+       "startTime": "0.900s",
+       "endTime": "0.900s",
+       "word": "do"
+      },
+      {
+       "startTime": "0.900s",
+       "endTime": "1s",
+       "word": "toho"
+      },
+      {
+       "startTime": "1s",
+       "endTime": "2s",
+       "word": "plus"
+      },
+      {
+       "startTime": "2s",
+       "endTime": "3.200s",
+       "word": "jedeme"
+      },
+      {
+       "startTime": "3.200s",
+       "endTime": "3.800s",
+       "word": "jedeme"
+      },
+      {
+       "startTime": "3.800s",
+       "endTime": "4.900s",
+       "word": "je\u0161t\u011b"
+      },
+      {
+       "startTime": "4.900s",
+       "endTime": "5.100s",
+       "word": "na"
+      },
+      {
+       "startTime": "5.100s",
+       "endTime": "5.300s",
+       "word": "v\u00e1s"
+      },
+      {
+       "startTime": "5.300s",
+       "endTime": "5.600s",
+       "word": "do\u017eenu"
+      },
+      {
+       "startTime": "5.600s",
+       "endTime": "9.100s",
+       "word": "Zatracenej"
+      },
+      {
+       "startTime": "9.100s",
+       "endTime": "9.200s",
+       "word": "kr\u00e1m"
+      },
+      {
+       "startTime": "9.200s",
+       "endTime": "13s",
+       "word": "univerz\u00e1ln\u00ed"
+      },
+      {
+       "startTime": "13s",
+       "endTime": "13.400s",
+       "word": "co"
+      },
+      {
+       "startTime": "13.400s",
+       "endTime": "14.800s",
+       "word": "v\u0161echno"
+      },
+      {
+       "startTime": "14.800s",
+       "endTime": "15.300s",
+       "word": "m\u00e1me"
+      },
+      {
+       "startTime": "15.300s",
+       "endTime": "16.100s",
+       "word": "Karpatsk\u00e1"
+      },
+      {
+       "startTime": "16.100s",
+       "endTime": "17.400s",
+       "word": "fazole"
+      },
+      {
+       "startTime": "17.400s",
+       "endTime": "18.300s",
+       "word": "jantarov\u00e9"
+      },
+      {
+       "startTime": "18.300s",
+       "endTime": "23s",
+       "word": "Amerika"
+      },
+      {
+       "startTime": "23s",
+       "endTime": "24.600s",
+       "word": "nem\u00e1m"
+      },
+      {
+       "startTime": "24.600s",
+       "endTime": "25.200s",
+       "word": "vod\u011b"
+      },
+      {
+       "startTime": "25.200s",
+       "endTime": "26.700s",
+       "word": "nap\u011b\u0148ova\u010d"
+      },
+      {
+       "startTime": "26.700s",
+       "endTime": "27.600s",
+       "word": "v\u00fdm\u011bn\u011b"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Hal\u00f3 sv\u016fj star\u00fd telefon si p\u0159ij\u010fte vym\u011bnit rad\u011bji k n\u00e1m se slu\u017ebou Fresh klidn\u011b ka\u017ed\u00fd rok",
+     "confidence": 0.9255890846252441,
+     "words": [
+      {
+       "startTime": "36.100s",
+       "endTime": "36.600s",
+       "word": "Hal\u00f3"
+      },
+      {
+       "startTime": "36.600s",
+       "endTime": "37.100s",
+       "word": "sv\u016fj"
+      },
+      {
+       "startTime": "37.100s",
+       "endTime": "37.500s",
+       "word": "star\u00fd"
+      },
+      {
+       "startTime": "37.500s",
+       "endTime": "37.900s",
+       "word": "telefon"
+      },
+      {
+       "startTime": "37.900s",
+       "endTime": "38.100s",
+       "word": "si"
+      },
+      {
+       "startTime": "38.100s",
+       "endTime": "38.400s",
+       "word": "p\u0159ij\u010fte"
+      },
+      {
+       "startTime": "38.400s",
+       "endTime": "38.600s",
+       "word": "vym\u011bnit"
+      },
+      {
+       "startTime": "38.600s",
+       "endTime": "39.200s",
+       "word": "rad\u011bji"
+      },
+      {
+       "startTime": "39.200s",
+       "endTime": "39.300s",
+       "word": "k"
+      },
+      {
+       "startTime": "39.300s",
+       "endTime": "39.500s",
+       "word": "n\u00e1m"
+      },
+      {
+       "startTime": "39.500s",
+       "endTime": "39.900s",
+       "word": "se"
+      },
+      {
+       "startTime": "39.900s",
+       "endTime": "40.300s",
+       "word": "slu\u017ebou"
+      },
+      {
+       "startTime": "40.300s",
+       "endTime": "40.600s",
+       "word": "Fresh"
+      },
+      {
+       "startTime": "40.600s",
+       "endTime": "41.200s",
+       "word": "klidn\u011b"
+      },
+      {
+       "startTime": "41.200s",
+       "endTime": "41.300s",
+       "word": "ka\u017ed\u00fd"
+      },
+      {
+       "startTime": "41.300s",
+       "endTime": "41.700s",
+       "word": "rok"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": " Hal\u00f3 tak v\u00e1\u0161 star\u00fd telefon odkoup\u00edme a nav\u00edc hned p\u0159isp\u011bjeme 1000 K\u010d na nov\u00fd Samsung",
+     "confidence": 0.8089239597320557,
+     "words": [
+      {
+       "startTime": "43.400s",
+       "endTime": "43.800s",
+       "word": "Hal\u00f3"
+      },
+      {
+       "startTime": "43.800s",
+       "endTime": "48.500s",
+       "word": "tak"
+      },
+      {
+       "startTime": "48.500s",
+       "endTime": "53.800s",
+       "word": "v\u00e1\u0161"
+      },
+      {
+       "startTime": "53.800s",
+       "endTime": "54.100s",
+       "word": "star\u00fd"
+      },
+      {
+       "startTime": "54.100s",
+       "endTime": "54.500s",
+       "word": "telefon"
+      },
+      {
+       "startTime": "54.500s",
+       "endTime": "55.100s",
+       "word": "odkoup\u00edme"
+      },
+      {
+       "startTime": "55.100s",
+       "endTime": "55.200s",
+       "word": "a"
+      },
+      {
+       "startTime": "55.200s",
+       "endTime": "55.600s",
+       "word": "nav\u00edc"
+      },
+      {
+       "startTime": "55.600s",
+       "endTime": "55.800s",
+       "word": "hned"
+      },
+      {
+       "startTime": "55.800s",
+       "endTime": "56.400s",
+       "word": "p\u0159isp\u011bjeme"
+      },
+      {
+       "startTime": "56.400s",
+       "endTime": "56.900s",
+       "word": "1000"
+      },
+      {
+       "startTime": "56.900s",
+       "endTime": "57.200s",
+       "word": "K\u010d"
+      },
+      {
+       "startTime": "57.200s",
+       "endTime": "57.200s",
+       "word": "na"
+      },
+      {
+       "startTime": "57.200s",
+       "endTime": "57.500s",
+       "word": "nov\u00fd"
+      },
+      {
+       "startTime": "57.500s",
+       "endTime": "57.800s",
+       "word": "Samsung"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
